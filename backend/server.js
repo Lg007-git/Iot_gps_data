@@ -6,8 +6,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:5173','https://iot-gps-data.vercel.app'  // <-- Allow this origin
-  ],
+  origin: ['http://localhost:5173','https://iot-gps-data.vercel.app'],
   methods: ['GET', 'POST'],
   credentials: true
 }));
@@ -18,7 +17,7 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true
 });
 
-app.use('/gps', gpsRoute);
+app.use('/gps', gpsRoute); 
 
 app.listen(process.env.PORT || 5000, () => {
   console.log('Server is running');
