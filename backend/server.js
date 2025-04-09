@@ -20,6 +20,6 @@ mongoose.connect(process.env.MONGO_URI, {
 
 app.use('/gps', gpsRoute); 
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log('Server is running');
-});
+// app.listen(process.env.PORT || 5000, () => {
+//   console.log('Server is running');
+// });
