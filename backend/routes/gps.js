@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
   try {
     const gps = new GPS(req.body);
     await gps.save();
-    res.send('Saved to MongoDB');
+    res.status(200).send('Saved to MongoDB');
   } catch (err) {
     res.status(500).send(err.message);
   }
