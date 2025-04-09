@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true
 });
 
-router.post('/gps/v1', async (req, res) => {
+app.post('/gps/v1', async (req, res) => {
   try {
     const gps = new GPS(req.body);
     await gps.save();
