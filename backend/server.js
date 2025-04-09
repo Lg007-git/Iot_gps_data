@@ -14,9 +14,7 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
-app.options('*', (req, res) => {
-  res.sendStatus(200);
-});
+app.options('*', cors());
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
