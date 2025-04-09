@@ -13,14 +13,4 @@ router.post('/', async (req, res) => {
   }
 });
 
-// ✅ GET route to fetch data
-router.get('/', async (req, res) => {
-  try {
-    const data = await GPS.find().sort({ timestamp: -1 });
-    res.json(data);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
-
 module.exports = router;
