@@ -8,6 +8,7 @@ const app = express();
 app.use(cors({
   origin: ['http://localhost:5173','https://iot-gps-data.vercel.app'],
   methods: ['GET', 'POST','OPTIONS'],
+  allowedHeaders: ['Content-Type'],
   credentials: true
 }));
 app.use(express.json());
