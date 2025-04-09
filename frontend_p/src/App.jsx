@@ -25,7 +25,7 @@ function App() {
         };
 
         try {
-          await fetch("https://iot-gps-data-8u1l.vercel.app/gps", {
+          await fetch("https://iot-gps-databackend.vercel.app/gps", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(gpsData)
