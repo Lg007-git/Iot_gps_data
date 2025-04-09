@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 app.use(cors({
   origin: ['http://localhost:5173','https://iot-gps-data.vercel.app'],
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST','OPTIONS'],
   credentials: true
 }));
 app.use(express.json());
