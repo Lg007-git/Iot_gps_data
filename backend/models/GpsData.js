@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const gpsSchema = new mongoose.Schema({
   latitude: Number,
@@ -8,4 +8,6 @@ const gpsSchema = new mongoose.Schema({
   timestamp: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('GPS', gpsSchema);
+const GPS= mongoose.model('GPS', gpsSchema);
+
+export default GPS;
