@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const GPS = require('../models/GpsData');
 const cors = require('cors');
 const express = require('express');
-const serverless = require('serverless-http');
 
 const app = express();
 
@@ -23,7 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 // POST handler
-app.post('/api/gps/v1', async (req, res) => {
+app.post('/gps/v1', async (req, res) => {
   try {
     const gps = new GPS(req.body);
     await gps.save();
@@ -34,7 +33,7 @@ app.post('/api/gps/v1', async (req, res) => {
 });
 
 // GET handler
-app.get('/api/gps/v1', (req, res) => {
+app.get('/gps/v1', (req, res) => {
   res.send('POST your GPS data here.');
 });
 
