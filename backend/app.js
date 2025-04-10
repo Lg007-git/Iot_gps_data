@@ -47,8 +47,8 @@ app.get('/gps/v1', (req, res) => {
   res.send('POST your GPS data here.');
 });
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log('Server is running');
-});
+// app.listen(process.env.PORT || 5000, () => {
+//   console.log('Server is running');
+// });
 
 module.exports = app;
