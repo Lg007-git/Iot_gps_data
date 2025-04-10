@@ -9,8 +9,7 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  //origin: ['http://localhost:5173'], // allow your frontend
-  origin: ['https://iot-gps-data-gq1r.vercel.app'],
+  origin: ['https://iot-gps-data-gq1r.vercel.app','http://localhost:5173'],
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
 };
