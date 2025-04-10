@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const GPS = require('./models/GpsData');
+const GPS = require('./models/GpsData.js');
 require('dotenv').config();
 
 const app = express();
@@ -50,4 +50,5 @@ app.get('/gps/v1', (req, res) => {
 app.listen(process.env.PORT || 5000, () => {
   console.log('Server is running');
 });
+
 module.exports = app;
