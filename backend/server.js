@@ -1,8 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
-const GPS = require('../models/GpsData');
+const GPS = require('./models/GpsData');
 require('dotenv').config();
 
 const app = express();
