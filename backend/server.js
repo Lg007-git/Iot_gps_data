@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const gpsRoute = require('./routes/gps.js');
+
 const GPS = require('../models/GpsData');
 require('dotenv').config();
 
@@ -14,7 +14,7 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
-app.options('*', cors());
+// app.options('*', cors());
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
