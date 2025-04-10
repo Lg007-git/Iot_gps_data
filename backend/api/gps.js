@@ -1,10 +1,20 @@
 import mongoose from 'mongoose';
 import GPS from '../models/GpsData.js';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 
 let isConnected = false;
+
+const corsOptions = {
+    origin: '*',
+    // : ['https://iot-gps-data-gq1r.vercel.app'],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type'],
+};
+
+app.use(cors(corsOptions));
 
 export default async function handler(req, res) {
   // CORS headers
