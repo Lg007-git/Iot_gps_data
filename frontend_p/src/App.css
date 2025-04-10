@@ -1,9 +1,18 @@
+/* Reset and base */
 body, html {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  background: url('/bkg-mob.webp') no-repeat;
+  background-size: cover;
   height: 100%;
+}
+
+@media (min-width: 768px) {
+  body, html{
+    background: url('/bkg.jpg') no-repeat;
+    background-size: cover;
+  }
 }
 
 .app-container {
@@ -13,44 +22,51 @@ body, html {
   height: 100vh;
 }
 
+/* Card */
 .card {
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 420px;
-}
-
-.heading {
-  font-size: 28px;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #333;
-}
-
-.input {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  max-width: 26.25rem;
   box-sizing: border-box;
 }
 
+/* Heading */
+.heading {
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  color: green;
+}
+
+/* Input */
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.5rem;
+  margin-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+/* Buttons */
 .button-group {
   display: flex;
   justify-content: space-between;
 }
 
 .button {
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
   border: none;
   color: white;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .start {
@@ -66,14 +82,51 @@ body, html {
   cursor: not-allowed;
 }
 
+/* Status indicator */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-right: 1.75rem;
+}
+
+.circle {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin: auto;
+  animation: blink 0.5s infinite;
+}
+
+.green {
+  background-color: #28a745;
+}
+
+.red {
+  background-color: #dc3545;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* Live Data */
 .data-container {
-  margin-top: 25px;
-  color: #444;
-  font-size: 16px;
+  margin-top: 1.5625rem;
+  color: lightblue;
+  font-size: 1rem;
 }
 
 .subheading {
-  font-size: 20px;
-  margin-bottom: 12px;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
   color: #222;
+}
+
+.parentx {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

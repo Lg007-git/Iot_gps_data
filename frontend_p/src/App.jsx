@@ -5,6 +5,7 @@ function App() {
   const intervalRef = useRef(null);
   const [vehicleId, setVehicleId] = useState('');
   const [currentData, setCurrentData] = useState(null);
+  const [sendStatus, setSendStatus] = useState(null); // new
 
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(
@@ -37,14 +38,21 @@ function App() {
     if (!intervalRef.current && currentData) {
       intervalRef.current = setInterval(async () => {
         try {
-          await fetch("https://iot-gps-data.vercel.app/gps/v1", {
+          const res = await fetch("https://iot-gps-data.vercel.app/gps/v1", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(currentData),
           });
+
+          if (!res.ok) throw new Error("HTTP error");
+          setSendStatus('success');
         } catch (err) {
+          setSendStatus('error');
           console.error("Failed to send:", err);
         }
+
+        // Remove blink after 1.5s
+        setTimeout(() => setSendStatus(null), 1500);
       }, 3000);
     }
   };
@@ -79,17 +87,24 @@ function App() {
             Stop
           </button>
         </div>
-
+      <div className='parentx'>
         {currentData && (
           <div className="data-container">
             <h2 className="subheading">Live GPS Data</h2>
-            <div><strong>Vehicle ID:</strong> {currentData.vehicleId || "Enter Vehicle Id to Start"}</div>
+            <div><strong>Vehicle ID:</strong> {currentData.vehicleId}</div>
             <div><strong>Latitude:</strong> {currentData.latitude}</div>
             <div><strong>Longitude:</strong> {currentData.longitude}</div>
             <div><strong>Speed:</strong> {currentData.speed}</div>
             <div><strong>Course:</strong> {currentData.course}</div>
           </div>
         )}
+
+        {sendStatus && (
+            <div className="status-indicator">
+              <div className={`circle ${sendStatus === 'success' ? 'green' : 'red'}`}></div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
