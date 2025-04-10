@@ -6,14 +6,17 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors({
-  origin: '*',
-  //origin: ['http://localhost:5173','https://iot-gps-data.vercel.app'],
+  //origin: '*',
+  origin: ['https://iot-gps-data.vercel.app'],
   methods: ['GET', 'POST','OPTIONS'],
   allowedHeaders: ['Content-Type'],
-  credentials: true
+  credentials: true,
+  optionsSuccessStatus: 200
 }));
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // handles preflight 
 app.use(express.json());
-// app.options('*', cors());
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
