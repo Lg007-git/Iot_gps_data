@@ -25,7 +25,7 @@ function App() {
         };
 
         try {
-          await fetch("https://iot-gps-databackend.vercel.app/gps/v1", {
+          await fetch("https://iot-gps-data.onrender.com/gps/v1", {
           //await fetch("http://localhost:5000/gps/v1",{
             method: "POST",
             headers: { "Content-Type": "application/json" },
