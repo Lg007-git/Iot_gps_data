@@ -5,14 +5,24 @@ const GPS = require('./models/GpsData');
 require('dotenv').config();
 
 const app = express();
-app.use(cors({
-  //origin: '*',
+
+// app.use(cors({
+//   //origin: '*',
+//   origin: ['https://iot-gps-data.vercel.app'],
+//   methods: ['GET', 'POST', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type'],
+//   credentials: true,
+//   optionsSuccessStatus: 200
+// }));
+
+// ✅ Define corsOptions here
+const corsOptions = {
   origin: ['https://iot-gps-data.vercel.app'],
-  methods: ['GET', 'POST','OPTIONS'],
+  methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
   credentials: true,
   optionsSuccessStatus: 200
-}));
+};
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); // handles preflight 
