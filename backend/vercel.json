@@ -1,3 +1,16 @@
 {
-    "version": 2
-}  
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/gps.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/gps/v1",
+        "dest": "/api/gps.js"
+      }
+    ]
+  }
+  
