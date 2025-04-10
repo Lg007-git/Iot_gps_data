@@ -8,4 +8,4 @@ const gpsSchema = new mongoose.Schema({
   timestamp: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('GPS', gpsSchema);
+module.exports = mongoose.models.GPS || mongoose.model('GPS', gpsSchema);
