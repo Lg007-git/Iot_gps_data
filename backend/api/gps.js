@@ -10,7 +10,7 @@ dotenv.config();
 
 const corsOptions = {
   //origin: ['https://iot-gps-data.vercel.app'],
-  origin : '*',
+  origin : ['https://iot-gps-data-gq1r.vercel.app'],
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
   credentials: true,
