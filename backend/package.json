@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "api/gps.js",
+  "type": "module",
   "scripts": {
     "dev": "vercel dev"
   },
@@ -10,7 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "mongoose": "^8.13.2"
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2",
+    "serverless-http": "^3.2.0"
   }
 }
