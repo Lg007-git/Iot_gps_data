@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const gpsSchema = new mongoose.Schema({
+  vehicleId: String,
   latitude: Number,
   longitude: Number,
   speed: Number,
