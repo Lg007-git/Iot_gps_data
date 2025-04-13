@@ -5,12 +5,13 @@ function App() {
   const intervalRef = useRef(null);
   const [vehicleId, setVehicleId] = useState('');
   const [currentData, setCurrentData] = useState(null);
-  const [sendStatus, setSendStatus] = useState(null); // new
+  const [sendStatus, setSendStatus] = useState(null);
 
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(
       (position) => {
-        const { latitude, longitude, speed, heading: course } = position.coords;
+        const { latitude, longitude, speed, heading: course, accuracy  } = position.coords;
+        if (accuracy > 20) return;
         setCurrentData({
           vehicleId,
           latitude,
