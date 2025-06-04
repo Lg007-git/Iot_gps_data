@@ -3,9 +3,14 @@ import './App.css';
 
 function App() {
   const intervalRef = useRef(null);
+  const vehicleIdRef = useRef('');
   const [vehicleId, setVehicleId] = useState('');
   const [currentData, setCurrentData] = useState(null);
   const [sendStatus, setSendStatus] = useState(null);
+
+  useEffect(() => {
+    vehicleIdRef.current = vehicleId; // keep ref updated with latest input
+  }, [vehicleId]);
 
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(
@@ -13,12 +18,13 @@ function App() {
         const { latitude, longitude, speed, heading: course, accuracy  } = position.coords;
         if (accuracy > 20) return;
         setCurrentData({
-          vehicleId,
+          vehicleId: vehicleIdRef.current,
           latitude,
           longitude,
           speed: speed || 0,
           course: course || 0,
         });
+        console.log(currentData);
       },
       (error) => {
         console.error("Geolocation error:", error);
@@ -33,7 +39,7 @@ function App() {
     return () => {
       navigator.geolocation.clearWatch(watchId);
     };
-  }, [vehicleId]);
+  }, []);
 
   const startSendingLocation = () => {
     if (!intervalRef.current && currentData) {
@@ -68,13 +74,13 @@ function App() {
       <div className="card">
         <h1 className="heading">GPS Tracker</h1>
 
-        <input
-          type="text"
-          placeholder="Enter Vehicle ID"
-          value={vehicleId}
-          onChange={(e) => setVehicleId(e.target.value)}
-          className="input"
-        />
+          <input
+            type="text"
+            placeholder="Enter Vehicle ID"
+            value={vehicleId}
+            onChange={(e) => setVehicleId(e.target.value)}
+            className="input"
+          />
 
         <div className="button-group">
           <button
@@ -89,7 +95,9 @@ function App() {
           </button>
         </div>
       <div className='parentx'>
-        {currentData && (
+        {!currentData ? (
+              <p>Waiting for GPS data...</p>
+              ) : (
           <div className="data-container">
             <h2 className="subheading">Live GPS Data</h2>
             <div><strong>Vehicle ID:</strong> {currentData.vehicleId}</div>
@@ -106,6 +114,10 @@ function App() {
             </div>
           )}
         </div>
+          <button className="parklink" onClick={() => window.location.href = 'https://iot-project-interfacefrontend.vercel.app/'}>
+              LNM Park
+            </button>
+
       </div>
     </div>
   );
