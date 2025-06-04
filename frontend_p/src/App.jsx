@@ -18,7 +18,7 @@ function App() {
         const { latitude, longitude, speed, heading: course, accuracy  } = position.coords;
         if (accuracy > 20) return;
         setCurrentData({
-          vehicleId: vehicleIdRef.current,
+          vehicleId,
           latitude,
           longitude,
           speed: speed || 0,
