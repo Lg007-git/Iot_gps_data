@@ -8,9 +8,9 @@ function App() {
   const [currentData, setCurrentData] = useState(null);
   const [sendStatus, setSendStatus] = useState(null);
 
-  useEffect(() => {
-    vehicleIdRef.current = vehicleId; // keep ref updated with latest input
-  }, [vehicleId]);
+  // useEffect(() => {
+  //   vehicleIdRef.current = vehicleId; // keep ref updated with latest input
+  // }, [vehicleId]);
 
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(
@@ -39,7 +39,7 @@ function App() {
     return () => {
       navigator.geolocation.clearWatch(watchId);
     };
-  }, []);
+  }, [vehicleId]);
 
   const startSendingLocation = () => {
     if (!intervalRef.current && currentData) {
